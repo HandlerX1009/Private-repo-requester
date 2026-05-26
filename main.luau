@@ -33,4 +33,4 @@ function container.loadstring_private(chunk_name)
 	loadstring(Script, chunk_name)()
 end
 
-return module
+return container
