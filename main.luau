@@ -7,7 +7,9 @@ local HttpService = game:GetService("HttpService")
 local EncodingService = game:GetService("EncodingService")
 
 local function encode_url(url)
-	return url:gsub(" ", "%20")
+	local abc = url:gsub(" ", "%20")
+	print(abc)
+	return abc
 end
 
 function container.update_data(repo_key, github_user, repo_name)
