@@ -30,7 +30,7 @@ function container.loadstring_private(chunk_name)
 
 	local Script = buffer.tostring(UncleanedData)
 
-	loadstring(Script, chunk_name)()
+	return loadstring(Script, chunk_name)()
 end
 
 return container
