@@ -1,4 +1,4 @@
-local module = {}
+local container = {}
 
 local REPO_KEY = ""
 local GITHUB_LOCATION = ""
@@ -7,13 +7,13 @@ local GITHUB_SCRIPT = ""
 local HttpService = game:GetService("HttpService")
 local EncodingService = game:GetService("EncodingService")
 
-function module.update_data(repo_key, github_user, repo_name, script_location)
+function container.update_data(repo_key, github_user, repo_name, script_location)
 	REPO_KEY = repo_key
 	GITHUB_LOCATION = ("https://api.github.com/repos/%s/%s/contents/"):format(github_user, repo_name)
 	GITHUB_SCRIPT = script_location
 end
 
-function module.loadstring_private(chunk_name)
+function container.loadstring_private(chunk_name)
 	local RequestData = request({
 		Url = GITHUB_LOCATION .. HttpService:UrlEncode(GITHUB_SCRIPT),
 		Method = "GET",
