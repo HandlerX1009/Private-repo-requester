@@ -30,7 +30,7 @@ function module.loadstring_private(chunk_name)
 
 	local Script = buffer.tostring(UncleanedData)
 
-	return loadstring(Script, chunk_name)()
+	loadstring(Script, chunk_name)()
 end
 
 return module
