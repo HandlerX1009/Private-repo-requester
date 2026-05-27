@@ -20,7 +20,11 @@ function container.update_data(repo_key, github_user, repo_name)
 end
 
 function container.loadstring_private(script_location, chunk_name)
-	debug_print("Requesting github data...")
+	if not chunk_name then
+		chunk_name = ""
+	end
+
+	--debug_print("Requesting github data...")
 
 	local RequestData = request({
 		Url = GITHUB_LOCATION .. encode_url(script_location),
@@ -30,20 +34,20 @@ function container.loadstring_private(script_location, chunk_name)
 
 	RequestData = HttpService:JSONDecode(RequestData.Body)
 
-	debug_print("Decoding request data...")
+	--debug_print("Decoding request data...")
 
 	local UncleanedData = RequestData.content
 	UncleanedData = table.concat(UncleanedData:split("\n"), "")
 
-	debug_print("Cleaning request data...")
+	--debug_print("Cleaning request data...")
 
 	UncleanedData = buffer.fromstring(UncleanedData)
 	UncleanedData = EncodingService:Base64Decode(UncleanedData)
 
 	local Script = buffer.tostring(UncleanedData)
 
-	debug_print("Finalizing request data...")
-	debug_print(("Data: %s"):format(Script))
+	--debug_print("Finalizing request data...")
+	--debug_print(("Data: %s"):format(Script))
 
 	return loadstring(Script, chunk_name)()
 end
