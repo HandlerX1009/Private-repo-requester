@@ -20,10 +20,6 @@ function container.update_data(repo_key, github_user, repo_name)
 end
 
 function container.loadstring_private(script_location, chunk_name)
-	if not chunk_name then
-		chunk_name = ""
-	end
-
 	--debug_print("Requesting github data...")
 
 	local RequestData = request({
